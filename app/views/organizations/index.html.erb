@@ -1,0 +1,18 @@
+You are an owner of these organizations.  Check the organizations you want to
+participate in SSIM and update
+<% github_user.joined_organizations.each do |organization| %>
+  <div class='field'>
+    <% if organization.new_record? %>
+      <%= simple_form_for organization do |f| %>
+        <%= f.submit 'Join' %>
+        <%= f.input :github_id, as: :hidden, input_html: {value: organization.github_id } %>
+        <%= f.input :name, as: :hidden, input_html: {value: organization.name } %>
+        <%= f.label organization.name %>
+      <% end %>
+
+    <% else %>
+      <%= link_to "Revoke", organization_path(organization), method: :delete, alert: "Are you sure" %>
+      <%= label_tag organization.name %>
+    <% end %>
+  </div>
+<% end %>
