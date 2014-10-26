@@ -12,6 +12,8 @@ class Organization < ActiveRecord::Base
 
   def html_url
     details['html_url']
+  rescue
+    'https://github.com/%s' % name
   end
 
   def contributors_count
