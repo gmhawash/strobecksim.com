@@ -5,14 +5,17 @@ participate in SSIM and update
     <% if organization.new_record? %>
       <%= simple_form_for organization do |f| %>
         <%= f.submit 'Join' %>
+        <%= f.label organization.name %>
         <%= f.input :github_id, as: :hidden, input_html: {value: organization.github_id } %>
         <%= f.input :name, as: :hidden, input_html: {value: organization.name } %>
-        <%= f.label organization.name %>
+        <%= f.input :avatar_url, as: :hidden, input_avatar: {value: organization.avatar_url} %>
       <% end %>
-
     <% else %>
-      <%= link_to "Revoke", organization_path(organization), method: :delete, alert: "Are you sure" %>
+      <% if organization.users.blank? %>
+        <%= link_to "Revoke", organization_path(organization), method: :delete, alert: "Are you sure" %>
+      <% end %>
       <%= label_tag organization.name %>
+      <span class='font-09em'><%= organization.contributors_count %></span>
     <% end %>
   </div>
 <% end %>

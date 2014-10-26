@@ -1,6 +1,11 @@
-<%= simple_form_for @user do |f| %>
-  <%= f.error_notification %>
-  <%= f.input :bitcoin_address, hint: "Enter bitcoin address" %>
-  <%= f.input :agreement_accepted, label: "I guess I agree to whatever you say :)" %>
-  <%= f.submit 'Accept' %>
+<% if current_user.agreement_accepted? %>
+  <%= render 'organizations' %>
+<% else %>
+  <%= simple_form_for current_user do |f| %>
+    <%= f.error_notification %>
+    <%= f.input :bitcoin_address, hint: "Enter bitcoin address" %>
+    <%= f.input :agreement_accepted, label: "I guess I agree to whatever you say :)" %>
+    <%= f.submit 'Accept' %>
+  <% end %>
 <% end %>
+

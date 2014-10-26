@@ -1,0 +1,32 @@
+<div id='organizations'>
+  <h2>Orgnaization I can join</h2>
+  <input type="text" class="search" placeholder='Organization Name' />
+  <ul class="list">
+    <% current_user.candidate_organizations.each do |organization| %>
+      <li class='field'>
+        <%= simple_form_for [:user, organization] do |f| %>
+          <%= f.submit 'Join' %>
+          <%= link_to organization.name, organization.html_url, target: :_blank, class: 'name' %>
+        <% end %>
+      </li>
+    <% end %>
+  </ul>
+  <ul class='pagination'></ul>
+
+  <hr />
+  <h2>Already joined</h2>
+  <% current_user.organizations.each do |organization| %>
+    <div class='field'>
+      <%= link_to "Revoke", user_organization_path(organization), method: :delete, alert: "Are you sure" %>
+      <%= link_to organization.name, organization.html_url, target: :_blank, class: 'name' %>
+    </div>
+  <% end %>
+</div>
+
+<%= javascript_tag do %>
+  var options = {
+    valueNames: ['name']
+  };
+
+  new List('organizations', options);
+<% end %>

@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
-  resources :users, only: [:edit, :update]
+  resource :user, only: [:edit, :update] do
+    resources :organizations, controller: :organizations_users
+  end
+
   resources :organizations
   root to: 'visitors#index'
   get '/auth/:provider/callback' => 'sessions#create'

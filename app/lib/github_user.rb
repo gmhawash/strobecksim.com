@@ -9,7 +9,7 @@ class GithubUser < Octokit::Client
 
   def joined_organizations
     owned_organizations.map do |org|
-      Organization.find_or_initialize_by(github_id: org.id, name: org.login.strip)
+      Organization.find_or_initialize_by(github_id: org.id, name: org.login.strip, avatar_url: org.avatar_url)
     end.sort_by(&:name)
   end
 end

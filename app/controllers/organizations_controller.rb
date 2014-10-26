@@ -1,8 +1,6 @@
 class OrganizationsController < AuthenticatedController
   before_action :ensure_agreement_accepted
 
-
-
   def create
     if Organization.create(permitted_params)
       redirect_to :back
@@ -21,11 +19,11 @@ class OrganizationsController < AuthenticatedController
   private
     def ensure_agreement_accepted
       unless current_user.agreement_accepted
-        redirect_to edit_user_path(current_user), notice: "You must accept the agreement terms before you proceed"
+        redirect_to edit_user_path, notice: "You must accept the agreement terms before you proceed"
       end
     end
 
     def permitted_params
-      params[:organization].permit(:github_id, :name)
+      params[:organization].permit(:github_id, :name, :avatar_url)
     end
 end

@@ -1,3 +1,6 @@
 %ul.nav
   %li= link_to 'Home', root_path
   = render 'layouts/navigation_links'
+  - if user_signed_in? && current_user.agreement_accepted?
+    %li= link_to 'Organizations', organizations_path
+    %li= link_to 'Contribute', edit_user_path
