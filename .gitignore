@@ -1,12 +1,3 @@
 tmp/
 log/
 public/assets/
-app/controllers/organizations_users_controller.rb
-app/helpers/organizations_users_helper.rb
-app/views/organizations_users/_form.html.haml
-app/views/organizations_users/edit.html.haml
-app/views/organizations_users/index.html.haml
-app/views/organizations_users/index.json.jbuilder
-app/views/organizations_users/new.html.haml
-app/views/organizations_users/show.html.haml
-app/views/organizations_users/show.json.jbuilder
