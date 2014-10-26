@@ -17,6 +17,7 @@ gem 'pg'
 gem 'simple_form'
 gem 'octokit'
 gem 'nested_form'
+gem 'foreigner'
 
 group :development do
   gem 'better_errors'
@@ -30,7 +31,6 @@ group :development do
   gem 'rb-fchange', :require=>false
   gem 'rb-fsevent', :require=>false
   gem 'rb-inotify', :require=>false
-  gem 'foreigner'
 end
 group :development, :test do
   gem 'factory_girl_rails'
