@@ -6,12 +6,15 @@ class GithubUser < Octokit::Client
       # if success, then an owner, if 404 then not.
       # http://stackoverflow.com/questions/20144295/github-api-v3-determine-if-user-is-an-owner-of-an-organization
 
-      begin
-        response = patch Octokit::Organization.path(org.login), {}
-        org
-      rescue Octokit::NotFound
-      end
+      teams = organization_teams(org.login)
+      team = teams.find {|x| x.slug == 'owners'}
+      next unless team_member?(team.id, username)
+      org
     end.compact
+  end
+
+  def username
+    @user ||= user.login
   end
 
   def joined_organizations
