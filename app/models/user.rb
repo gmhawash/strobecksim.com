@@ -1,7 +1,13 @@
 class User < ActiveRecord::Base
-  validates :bitcoin_address, :agreement_accepted, presence: true, on: :update
+  validates :agreement_accepted, presence: true, on: :update
+  validates :bitcoin_address, presence: true, on: :update, unless: :agreement_already_accepted
+  has_many :organization_users
   has_and_belongs_to_many :organizations
   accepts_nested_attributes_for :organizations
+
+  def agreement_already_accepted
+    agreement_accepted || agreement_accepted_change = [false, true]
+  end
 
   def candidate_organizations
     Organization.all - organizations
@@ -9,10 +15,10 @@ class User < ActiveRecord::Base
 
   def self.create_with_omniauth(auth)
     create! do |user|
-      user.provider = auth['provider']
-      user.uid = auth['uid']
-      if auth['info']
-         user.name = auth['info']['name'] || ""
+      user.provider = auth.provider
+      user.uid = auth.uuid
+      if auth.extra.raw_info
+        user.name = auth.extra.raw_info.login || ""
       end
     end
   end

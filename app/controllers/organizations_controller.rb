@@ -16,6 +16,10 @@ class OrganizationsController < AuthenticatedController
     end
   end
 
+  def show
+    @organization = Organization.find(params[:id])
+  end
+
   private
     def ensure_agreement_accepted
       unless current_user.agreement_accepted

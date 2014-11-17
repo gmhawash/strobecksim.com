@@ -1,0 +1,21 @@
+<div id='profile' >
+<div>Please edit your profile on <%= link_to 'Github', 'https://github.com/settings/profile' %>
+  <%- 
+    fields = %w(
+      login avatar_url gravatar_id html_url name company blog location email hireable
+      bio public_repos public_gists followers following created_at updated_at 
+    )
+  %>
+
+  <%- fields.each do |field| %>
+    <% value = user.send(field) %>
+    <div class='field'>
+      <label><%= field.humanize %></label>
+      <% if field =~ /url/ %>
+        <span><%= link_to value, value %></span>
+      <% else %>
+        <span><%= value %></span>
+      <% end %>
+    </div>
+  <%- end %>
+</div> 

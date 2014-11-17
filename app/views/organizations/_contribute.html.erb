@@ -5,7 +5,7 @@
     <% current_user.candidate_organizations.each do |organization| %>
       <li class='field'>
         <%= simple_form_for [:user, organization] do |f| %>
-          <%= f.submit 'Join' %>
+          <%= f.submit 'Contribute' %>
           <%= link_to organization.name, organization.html_url, target: :_blank, class: 'name' %>
         <% end %>
       </li>
@@ -17,7 +17,7 @@
   <h2>Already joined</h2>
   <% current_user.organizations.each do |organization| %>
     <div class='field'>
-      <%= link_to "Revoke", user_organization_path(organization), method: :delete, alert: "Are you sure" %>
+      <%= link_to "Unsubscribe", user_organization_path(organization), method: :delete, alert: "Are you sure" %>
       <%= link_to organization.name, organization.html_url, target: :_blank, class: 'name' %>
     </div>
   <% end %>

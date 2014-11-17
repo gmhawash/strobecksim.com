@@ -8,7 +8,7 @@ class GithubUser < Octokit::Client
 
       teams = organization_teams(org.login)
       team = teams.find {|x| x.slug == 'owners'}
-      next unless team_member?(team.id, username)
+      next unless team && team_member?(team.id, username)
       org
     end.compact
   end

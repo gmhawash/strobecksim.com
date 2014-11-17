@@ -1,0 +1,23 @@
+<div id='organization' >
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Github Handle</th>
+        <th>Bitcoin Address</th>
+        <th>Date Joined</th>
+      </tr>
+    </thead>
+    <tbody>
+      <%- @organization.users.each do |user| %>
+        <% org_user = user.organization_users.where(:organization_id => @organization.id).first %>
+        <tr>
+          <td> <%= user.name %> </td>
+          <td> <%= user.name %> </td>
+          <td> <%= user.bitcoin_address %> </td>
+          <td> <%= org_user.created_at %> </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div> 

@@ -17,8 +17,23 @@
 .field {
   display: block;
   clear: both;
+
+  label {
+    width: 10em;
+    float: left;
+    display: block;
+  }
+
+  span {
+    float: left;
+    display: block;
+  }
 }
 
+.rfloat {
+  display: block;
+  float: right;
+}
 .font-09em {
   font-size: 0.9em;
 }

@@ -1,11 +1,13 @@
-<% if current_user.agreement_accepted? %>
-  <%= render 'organizations' %>
-<% else %>
-  <%= simple_form_for current_user do |f| %>
-    <%= f.error_notification %>
-    <%= f.input :bitcoin_address, hint: "Enter bitcoin address" %>
+<%= simple_form_for current_user do |f| %>
+  <%= f.error_notification %>
+  <% if current_user.agreement_accepted? %>
+    <%= render 'profile', :user => github_user.user %>
+    <div class='field'>
+      <%= f.input :bitcoin_address %>
+    </div>
+  <% else %>
     <%= f.input :agreement_accepted, label: "I guess I agree to whatever you say :)" %>
-    <%= f.submit 'Accept' %>
   <% end %>
+  <%= f.submit 'Accept' %>
 <% end %>
 
