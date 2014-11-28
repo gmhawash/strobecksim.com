@@ -32,6 +32,7 @@ group :development do
   gem 'rb-fsevent', :require=>false
   gem 'rb-inotify', :require=>false
   gem 'pry-byebug'
+  gem 'activerecord-session_store'
 end
 group :development, :test do
   gem 'factory_girl_rails'
