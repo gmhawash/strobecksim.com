@@ -28,11 +28,12 @@ en:
 
 
   actions:
-    accept: Accept
+    accept: 'Accept'
     participate: 'Participate as an SSIM organization'
     contribute: Contribute
     unsubscribe: Unsubscribe
     revoke: Revoke
+    update: Update
 
   organizations:
     heading:

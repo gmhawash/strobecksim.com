@@ -5,9 +5,10 @@
     <div class='field'>
       <%= f.input :bitcoin_address %>
     </div>
+    <%= f.submit t('actions.update') %>
   <% else %>
     <%= f.input :agreement_accepted, label: t('title.agree_to_terms')  %>
+    <%= f.submit t('actions.accept') %>
   <% end %>
-  <%= f.submit t('action.accept') %>
 <% end %>
 
