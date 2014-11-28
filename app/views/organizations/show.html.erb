@@ -8,11 +8,11 @@
         <th>Date Joined</th>
       </tr>
     </thead>
-    <tbody>
+    <tbody class='list'>
       <%- @organization.users.each do |user| %>
         <% org_user = user.organization_users.where(:organization_id => @organization.id).first %>
         <tr>
-          <td> <%= user.name %> </td>
+          <td class='name'> <%= user.name %> </td>
           <td> <%= user.name %> </td>
           <td> <%= user.bitcoin_address %> </td>
           <td> <%= org_user.created_at %> </td>
@@ -20,4 +20,15 @@
       <% end %>
     </tbody>
   </table>
+  <ul class="pagination"></ul>
 </div> 
+
+<%= javascript_tag do %>
+  var options = {
+    valueNames: ['name'],
+    page: 10,
+    plugins: [ ListPagination({}) ] 
+  };
+
+  new List('organization', options);
+<% end %>
