@@ -6,8 +6,8 @@
       <%= f.input :bitcoin_address %>
     </div>
   <% else %>
-    <%= f.input :agreement_accepted, label: "I guess I agree to whatever you say :)" %>
+    <%= f.input :agreement_accepted, label: t('title.agree_to_terms')  %>
   <% end %>
-  <%= f.submit 'Accept' %>
+  <%= f.submit t('action.accept') %>
 <% end %>
 

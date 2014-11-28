@@ -1,11 +1,10 @@
-<h2>Orgnaization I Own</h2>
-You are an owner of these organizations.  Check the organizations you want to
-participate in SSIM and update
+<h2><%= t('titles.my_organizations') %></h2>
+<%= t('organizations.heading') %>
 <% github_user.joined_organizations.each do |organization| %>
   <div class='field'>
     <% if organization.new_record? %>
       <%= simple_form_for organization do |f| %>
-        <%= f.submit 'Participate as an SSIM organization' %>
+        <%= f.submit t('actions.participate')  %>
         <%= f.label organization.name %>
         <%= f.input :name, as: :hidden, input_html: {value: organization.name } %>
         <%= f.input :github_id, as: :hidden, input_html: {value: organization.github_id } %>
@@ -13,7 +12,7 @@ participate in SSIM and update
     <% else %>
       <%= link_to organization.name, organization %>
       <% if organization.users.blank? %>
-        <%= link_to "Revoke", organization_path(organization), method: :delete, alert: "Are you sure" %>
+        <%= link_to t('actions.revoke'), organization_path(organization), method: :delete, alert: "Are you sure" %>
       <% end %>
       <span class='font-09em'><%= organization.contributors_count %></span>
     <% end %>

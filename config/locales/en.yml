@@ -20,4 +20,21 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  titles:
+    my_organizations: Organizations I own
+    candidate_organizations: Orgnaization I can join
+    already_joined: Already joined
+    agree_to_terms: "I guess I agree to whatever you say :)"
+
+
+  actions:
+    accept: Accept
+    participate: 'Participate as an SSIM organization'
+    contribute: Contribute
+    unsubscribe: Unsubscribe
+    revoke: Revoke
+
+  organizations:
+    heading:
+      You are an owner of these organizations.  Check the organizations you want to
+      participate in SSIM and update

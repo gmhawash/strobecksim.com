@@ -1,11 +1,11 @@
 <div id='organizations'>
-  <h2>Orgnaization I can join</h2>
+<h2><%= t('titles.candidate_organizations') %> </h2>
   <input type="text" class="search" placeholder='Organization Name' />
   <ul class="list">
     <% current_user.candidate_organizations.each do |organization| %>
       <li class='field'>
         <%= simple_form_for [:user, organization] do |f| %>
-          <%= f.submit 'Contribute' %>
+          <%= f.submit t('actions.contribute')  %>
           <%= link_to organization.name, organization.html_url, target: :_blank, class: 'name' %>
         <% end %>
       </li>
@@ -14,10 +14,10 @@
   <ul class='pagination'></ul>
 
   <hr />
-  <h2>Already joined</h2>
+  <h2><%= t('titles.already_joined') %></h2>
   <% current_user.organizations.each do |organization| %>
     <div class='field'>
-      <%= link_to "Unsubscribe", user_organization_path(organization), method: :delete, alert: "Are you sure" %>
+      <%= link_to t('actions.unsubscribe') , user_organization_path(organization), method: :delete, alert: "Are you sure" %>
       <%= link_to organization.name, organization.html_url, target: :_blank, class: 'name' %>
     </div>
   <% end %>
