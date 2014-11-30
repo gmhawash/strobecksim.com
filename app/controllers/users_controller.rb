@@ -4,7 +4,7 @@ class UsersController < AuthenticatedController
 
   def update
     if current_user.update(permitted_params)
-      redirect_to :back
+      redirect_to edit_user_path
     else
       render :edit, notice: "You must accept the agreement terms before you proceed"
     end
